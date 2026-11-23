@@ -80,15 +80,11 @@ enterprise-stp-lab/
 │   ├── 05-hsrp-inter-vlan/
 │   ├── 06-test-rapid-convergence/
 │   ├── 07-test-etherchannel-failure/
-│   ├── 08-test-etherchannel-misconfig/
-│   ├── 09-test-dtp-behavior/
-│   ├── 10-test-bpdu-guard/
-│   ├── 11-test-root-hijack-root-guard/
-│   ├── 12-test-vtp-revision-overwrite/
-│   └── 13-test-hsrp-failover/
+│   ├── 08-test-bpdu-guard/
+│   ├── 09-test-root-hijack-root-guard/
 │       (each folder has README.md test sheet + screenshots/)
 └── packet-tracer/
-    └── .gitkeep              <- put your .pkt file here
+    └── .gitkeep  spanning-tree-protocol-lab.pkt 
 ```
 
 ## Quick start

@@ -36,22 +36,10 @@ evidence/
 ├── 07-test-etherchannel-failure/
 │   ├── README.md
 │   └── screenshots/
-├── 08-test-etherchannel-misconfig/
+├── 08-test-bpdu-guard/
 │   ├── README.md
 │   └── screenshots/
-├── 09-test-dtp-behavior/
-│   ├── README.md
-│   └── screenshots/
-├── 10-test-bpdu-guard/
-│   ├── README.md
-│   └── screenshots/
-├── 11-test-root-hijack-root-guard/
-│   ├── README.md
-│   └── screenshots/
-├── 12-test-vtp-revision-overwrite/
-│   ├── README.md
-│   └── screenshots/
-└── 13-test-hsrp-failover/
+├── 09-test-root-hijack-root-guard/
     ├── README.md
     └── screenshots/
 ```
