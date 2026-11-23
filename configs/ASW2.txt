@@ -1,0 +1,41 @@
+enable
+configure terminal
+hostname ASW2
+no ip domain-lookup
+!
+vtp domain ENTERPRISE
+vtp mode client
+vtp version 2
+vtp password Cisco123
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+!
+interface range fa0/1 - 2
+ description UPLINKS-TO-DSW1-DSW2
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ no shutdown
+!
+interface fa0/10
+ description PC-SALES
+ switchport mode access
+ switchport access vlan 20
+ switchport nonegotiate
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+!
+interface range fa0/3 - 9 , fa0/11 - 24 , gi0/1 - 2
+ switchport mode access
+ switchport access vlan 999
+ shutdown
+!
+interface vlan 99
+ ip address 192.168.99.22 255.255.255.0
+ no shutdown
+end
+write memory

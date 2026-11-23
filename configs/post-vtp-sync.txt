@@ -1,0 +1,10 @@
+! On DSW2 (its STP priorities need the VLANs, which arrive from DSW1 via VTP;
+! if the earlier "spanning-tree vlan ..." lines errored, re-enter them now):
+configure terminal
+spanning-tree vlan 30,40 priority 4096
+spanning-tree vlan 10,20,99 priority 8192
+end
+write memory
+
+! ASW1-4: re-enter "switchport access vlan 10/20/30/40" on Fa0/10 and
+! "switchport access vlan 999" on the unused ports if they errored.

@@ -1,0 +1,80 @@
+enable
+configure terminal
+hostname DSW2
+no ip domain-lookup
+ip routing
+!
+vtp domain ENTERPRISE
+vtp mode client
+vtp version 2
+vtp password Cisco123
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 30,40 priority 4096
+spanning-tree vlan 10,20 priority 8192
+spanning-tree vlan 1,99 priority 8192
+!
+interface range fa0/23 - 24
+ description ETHERCHANNEL-TO-DSW1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+ no shutdown
+!
+interface port-channel 1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+!
+interface range fa0/2 - 5
+ description DOWNLINK-TO-ASW
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ no shutdown
+!
+interface range fa0/1 , fa0/6 - 22 , gi0/1 - 2
+ switchport mode access
+ switchport access vlan 999
+ shutdown
+!
+interface vlan 99
+ ip address 192.168.99.12 255.255.255.0
+ no shutdown
+!
+interface vlan 10
+ ip address 192.168.10.3 255.255.255.0
+ standby version 2
+ standby 10 ip 192.168.10.1
+ standby 10 priority 100
+ standby 10 preempt
+ no shutdown
+interface vlan 20
+ ip address 192.168.20.3 255.255.255.0
+ standby version 2
+ standby 20 ip 192.168.20.1
+ standby 20 priority 100
+ standby 20 preempt
+ no shutdown
+interface vlan 30
+ ip address 192.168.30.3 255.255.255.0
+ standby version 2
+ standby 30 ip 192.168.30.1
+ standby 30 priority 110
+ standby 30 preempt
+ no shutdown
+interface vlan 40
+ ip address 192.168.40.3 255.255.255.0
+ standby version 2
+ standby 40 ip 192.168.40.1
+ standby 40 priority 110
+ standby 40 preempt
+ no shutdown
+!
+end
+write memory
