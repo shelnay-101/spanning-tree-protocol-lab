@@ -13,9 +13,6 @@ A two-tier (distribution + access) enterprise campus network for **Cisco Packet 
 
 ![Topology](docs/images/topology.png)
 
-> The screenshot above is the original design and still shows a CSW switch that this lab does not use.
-> Replace `docs/images/topology.png` with a screenshot of your finished topology.
-
 ```
                DSW1 ==Po1(LACP)== DSW2
               / | | \          / | | \
